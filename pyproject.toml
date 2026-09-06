@@ -26,10 +26,13 @@ dependencies = [
 [tool.pyrefly]
 python-version = "3.11"
 search-paths = ["backend"]
-site-packages = [".venv/Lib/site-packages"]
+exclude = [".venv", "backend/.venv", "frontend"]
 
 [tool.pyright]
-venvPath = "."
+venvPath = "backend"
 venv = ".venv"
 extraPaths = ["backend"]
-include = ["backend"]
+include = ["backend/app"]
+exclude = [".venv", "backend/.venv", "frontend"]
+reportMissingImports = "none"
+reportMissingTypeStubs = false

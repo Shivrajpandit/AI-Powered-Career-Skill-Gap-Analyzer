@@ -5,6 +5,14 @@
     "backend"
   ],
   "include": [
-    "backend"
-  ]
+    "backend/app"
+  ],
+  "exclude": [
+    "**/node_modules",
+    "**/.venv",
+    "**/dist",
+    "backend/.venv"
+  ],
+  "reportMissingImports": "none",
+  "reportMissingTypeStubs": false
 }
