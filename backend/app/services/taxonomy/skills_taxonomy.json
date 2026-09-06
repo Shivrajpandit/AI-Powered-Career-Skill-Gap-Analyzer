@@ -1,0 +1,106 @@
+{
+  "categories": {
+    "Programming": [
+      {"name": "Python", "canonical": "python", "aliases": ["python3", "py"]},
+      {"name": "JavaScript", "canonical": "javascript", "aliases": ["js", "es6", "vanilla js"]},
+      {"name": "TypeScript", "canonical": "typescript", "aliases": ["ts"]},
+      {"name": "Java", "canonical": "java", "aliases": ["core java", "java 8", "java 11", "java 17"]},
+      {"name": "C++", "canonical": "c++", "aliases": ["cpp", "c/c++"]},
+      {"name": "C#", "canonical": "c#", "aliases": ["csharp", ".net c#"]},
+      {"name": "C", "canonical": "c", "aliases": []},
+      {"name": "Go", "canonical": "go", "aliases": ["golang"]},
+      {"name": "Rust", "canonical": "rust", "aliases": ["rust-lang"]},
+      {"name": "Ruby", "canonical": "ruby", "aliases": ["ruby on rails"]},
+      {"name": "PHP", "canonical": "php", "aliases": ["php7", "php8"]},
+      {"name": "Swift", "canonical": "swift", "aliases": ["swiftui"]},
+      {"name": "Kotlin", "canonical": "kotlin", "aliases": []},
+      {"name": "Scala", "canonical": "scala", "aliases": []},
+      {"name": "R", "canonical": "r", "aliases": ["r-lang", "r programming"]},
+      {"name": "SQL", "canonical": "sql", "aliases": ["structured query language", "t-sql", "pl/sql"]}
+    ],
+    "Data Science": [
+      {"name": "Pandas", "canonical": "pandas", "aliases": []},
+      {"name": "NumPy", "canonical": "numpy", "aliases": []},
+      {"name": "SciPy", "canonical": "scipy", "aliases": []},
+      {"name": "Statistics", "canonical": "statistics", "aliases": ["statistical analysis", "probability", "inferential statistics", "hypothesis testing"]},
+      {"name": "Data Visualization", "canonical": "data visualization", "aliases": ["data viz", "visualisation"]},
+      {"name": "Matplotlib", "canonical": "matplotlib", "aliases": []},
+      {"name": "Seaborn", "canonical": "seaborn", "aliases": []},
+      {"name": "Power BI", "canonical": "power bi", "aliases": ["powerbi", "microsoft power bi", "dax"]},
+      {"name": "Tableau", "canonical": "tableau", "aliases": ["tableau desktop", "tableau server"]},
+      {"name": "Excel", "canonical": "excel", "aliases": ["ms excel", "advanced excel", "vlookup", "pivot tables"]},
+      {"name": "Data Cleaning", "canonical": "data cleaning", "aliases": ["data wrangling", "data preprocessing", "etl"]},
+      {"name": "Exploratory Data Analysis", "canonical": "exploratory data analysis", "aliases": ["eda"]},
+      {"name": "Looker", "canonical": "looker", "aliases": ["lookerml", "looker studio", "google data studio"]},
+      {"name": "Apache Spark", "canonical": "apache spark", "aliases": ["spark", "pyspark"]},
+      {"name": "Airflow", "canonical": "airflow", "aliases": ["apache airflow"]}
+    ],
+    "Machine Learning": [
+      {"name": "Machine Learning", "canonical": "machine learning", "aliases": ["ml", "applied ml"]},
+      {"name": "Deep Learning", "canonical": "deep learning", "aliases": ["dl", "neural networks", "ann", "cnn", "rnn", "lstm"]},
+      {"name": "Scikit-Learn", "canonical": "scikit-learn", "aliases": ["sklearn"]},
+      {"name": "TensorFlow", "canonical": "tensorflow", "aliases": ["tf", "tf2", "keras"]},
+      {"name": "PyTorch", "canonical": "pytorch", "aliases": ["torch"]},
+      {"name": "Natural Language Processing", "canonical": "natural language processing", "aliases": ["nlp", "text processing", "text mining", "spacy", "nltk"]},
+      {"name": "Computer Vision", "canonical": "computer vision", "aliases": ["cv", "opencv", "image processing", "yolo"]},
+      {"name": "Large Language Models", "canonical": "large language models", "aliases": ["llm", "llms", "genai", "generative ai", "prompt engineering"]},
+      {"name": "Transformers", "canonical": "transformers", "aliases": ["huggingface", "bert", "gpt", "sentence-transformers"]},
+      {"name": "XGBoost", "canonical": "xgboost", "aliases": ["gradient boosting", "lightgbm", "catboost"]},
+      {"name": "MLOps", "canonical": "mlops", "aliases": ["mlflow", "kubeflow", "model deployment", "model monitoring", "dvc"]},
+      {"name": "Reinforcement Learning", "canonical": "reinforcement learning", "aliases": ["rl"]}
+    ],
+    "Web Development": [
+      {"name": "HTML", "canonical": "html", "aliases": ["html5"]},
+      {"name": "CSS", "canonical": "css", "aliases": ["css3", "sass", "scss", "less"]},
+      {"name": "Tailwind CSS", "canonical": "tailwind css", "aliases": ["tailwind", "tailwindcss"]},
+      {"name": "React", "canonical": "react", "aliases": ["reactjs", "react.js", "react native"]},
+      {"name": "Next.js", "canonical": "next.js", "aliases": ["nextjs", "next"]},
+      {"name": "Vue.js", "canonical": "vue.js", "aliases": ["vue", "vuejs", "nuxt"]},
+      {"name": "Angular", "canonical": "angular", "aliases": ["angularjs", "angular 2+"]},
+      {"name": "Node.js", "canonical": "node.js", "aliases": ["nodejs", "node"]},
+      {"name": "Express.js", "canonical": "express.js", "aliases": ["express", "expressjs"]},
+      {"name": "FastAPI", "canonical": "fastapi", "aliases": ["fast-api"]},
+      {"name": "Django", "canonical": "django", "aliases": ["drf", "django rest framework"]},
+      {"name": "Flask", "canonical": "flask", "aliases": []},
+      {"name": "Spring Boot", "canonical": "spring boot", "aliases": ["spring", "spring framework", "spring mvc"]},
+      {"name": "ASP.NET", "canonical": "asp.net", "aliases": [".net core", "asp.net core", "dotnet"]},
+      {"name": "REST API", "canonical": "rest api", "aliases": ["restful apis", "restful api", "rest", "api design"]},
+      {"name": "GraphQL", "canonical": "graphql", "aliases": ["apollo graphql"]},
+      {"name": "Redux", "canonical": "redux", "aliases": ["redux toolkit", "rtk", "zustand"]}
+    ],
+    "Cloud": [
+      {"name": "AWS", "canonical": "aws", "aliases": ["amazon web services", "ec2", "s3", "lambda", "ecs", "eks", "cloudformation", "iam"]},
+      {"name": "Google Cloud", "canonical": "google cloud", "aliases": ["gcp", "google cloud platform", "bigquery", "cloud run", "gke"]},
+      {"name": "Microsoft Azure", "canonical": "azure", "aliases": ["azure devops", "azure cloud", "blob storage", "azure functions"]},
+      {"name": "Serverless", "canonical": "serverless", "aliases": ["serverless architecture", "aws lambda", "cloud functions"]}
+    ],
+    "Database": [
+      {"name": "PostgreSQL", "canonical": "postgresql", "aliases": ["postgres", "psql"]},
+      {"name": "MySQL", "canonical": "mysql", "aliases": ["mariadb"]},
+      {"name": "SQLite", "canonical": "sqlite", "aliases": ["sqlite3"]},
+      {"name": "MongoDB", "canonical": "mongodb", "aliases": ["mongo", "nosql"]},
+      {"name": "Redis", "canonical": "redis", "aliases": ["caching", "in-memory db"]},
+      {"name": "Cassandra", "canonical": "cassandra", "aliases": ["apache cassandra"]},
+      {"name": "DynamoDB", "canonical": "dynamodb", "aliases": ["aws dynamodb"]},
+      {"name": "Elasticsearch", "canonical": "elasticsearch", "aliases": ["elastic search", "elk stack", "opensearch"]},
+      {"name": "Vector Database", "canonical": "vector database", "aliases": ["pinecone", "chromadb", "weaviate", "qdrant", "milvus", "vector search"]}
+    ],
+    "DevOps": [
+      {"name": "Docker", "canonical": "docker", "aliases": ["containerization", "containers", "docker-compose"]},
+      {"name": "Kubernetes", "canonical": "kubernetes", "aliases": ["k8s", "helm"]},
+      {"name": "CI/CD", "canonical": "ci/cd", "aliases": ["continuous integration", "continuous deployment", "github actions", "gitlab ci", "jenkins"]},
+      {"name": "Git", "canonical": "git", "aliases": ["github", "gitlab", "version control", "bitbucket"]},
+      {"name": "Terraform", "canonical": "terraform", "aliases": ["infrastructure as code", "iac"]},
+      {"name": "Linux", "canonical": "linux", "aliases": ["unix", "bash", "shell scripting", "ubuntu", "debian", "centos", "redhat"]},
+      {"name": "Nginx", "canonical": "nginx", "aliases": ["reverse proxy", "apache httpd"]}
+    ],
+    "Soft Skills": [
+      {"name": "Communication", "canonical": "communication", "aliases": ["verbal communication", "written communication", "presentation skills"]},
+      {"name": "Problem Solving", "canonical": "problem solving", "aliases": ["analytical thinking", "troubleshooting", "critical thinking"]},
+      {"name": "Teamwork", "canonical": "teamwork", "aliases": ["collaboration", "cross-functional collaboration", "team player"]},
+      {"name": "Leadership", "canonical": "leadership", "aliases": ["mentoring", "team leadership", "coaching"]},
+      {"name": "Agile Methodologies", "canonical": "agile", "aliases": ["scrum", "kanban", "sprint planning", "jira"]},
+      {"name": "Time Management", "canonical": "time management", "aliases": ["prioritization", "multitasking"]}
+    ]
+  }
+}
