@@ -1,5 +1,8 @@
 import io
-import fitz  # PyMuPDF
+try:
+    import pymupdf as fitz  # PyMuPDF
+except ImportError:
+    import fitz  # Fallback
 import docx
 from app.core.exceptions import BadRequestCustomException
 
