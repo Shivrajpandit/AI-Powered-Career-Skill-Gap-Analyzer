@@ -289,8 +289,11 @@ docker-compose up --build
 | `GET` | `/api/v1/jobs/` | List saved job descriptions | Yes |
 | `POST` | `/api/v1/analysis/match` | Run hybrid semantic match & compute scores | Yes |
 | `GET` | `/api/v1/analysis/{id}` | Retrieve match audit report & breakdown | Yes |
+| `POST` | `/api/v1/analysis/compare-jobs` | Compare single resume across multiple job openings | Yes |
 | `POST` | `/api/v1/roadmap/generate` | Generate 12-week learning roadmap | Yes |
-| `GET` | `/api/v1/roadmap/resume/{id}/audit`| Run quality & action-verb audit on resume | Yes |
+| `GET` | `/api/v1/roadmap/{analysis_id}` | Retrieve learning roadmap for analysis | Yes |
+| `PATCH`| `/api/v1/roadmap/items/{item_id}` | Update progress status of roadmap stage | Yes |
+| `GET` | `/api/v1/roadmap/resumes/{id}/quality-audit`| Run quality & action-verb audit on resume | Yes |
 
 ---
 

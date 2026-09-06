@@ -43,8 +43,9 @@ async def upload_resume(
     try:
         parsed_result = ResumeParserService.parse_file(content, file.filename)
     except Exception as e:
+        status_code = getattr(status, "HTTP_422_UNPROCESSABLE_CONTENT", 422)
         raise HTTPException(
-            status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+            status_code=status_code,
             detail=f"Failed to parse resume: {str(e)}",
         )
 
