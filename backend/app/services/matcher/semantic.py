@@ -37,7 +37,7 @@ class SemanticMatcher:
 
     @staticmethod
     def compute_similarity(term1: str, term2: str) -> float:
-        """Compute cosine similarity between two skill terms."""
+        """Compute similarity between two skill terms using taxonomy aliases + embeddings."""
         t1 = term1.strip().lower()
         t2 = term2.strip().lower()
 
@@ -47,17 +47,40 @@ class SemanticMatcher:
         if frozenset([t1, t2]) in SemanticMatcher.DISALLOWED_MATCH_PAIRS:
             return 0.0
 
+        # Check Taxonomy Canonical Alias
+        from app.services.taxonomy.manager import taxonomy_manager
+        canon1 = taxonomy_manager.get_canonical_skill(t1)
+        canon2 = taxonomy_manager.get_canonical_skill(t2)
+
+        if canon1 and canon2 and canon1["canonical"] == canon2["canonical"]:
+            return 1.0
+
+        # If one is canonical and the other is an alias
+        if canon1 and canon1["canonical"] == t2:
+            return 1.0
+        if canon2 and canon2["canonical"] == t1:
+            return 1.0
+
+        # Check if skills belong to the same specific taxonomy subfield/category
+        category_boost = 0.0
+        if canon1 and canon2 and canon1["category"] == canon2["category"]:
+            category_boost = 0.25
+
         model = get_sentence_transformer_model()
         if model is None:
             # Fallback if sentence-transformers not available: token overlap
             set1 = set(t1.split())
             set2 = set(t2.split())
             jaccard = len(set1 & set2) / max(len(set1 | set2), 1)
-            return jaccard
+            return min(1.0, jaccard + category_boost)
 
-        embeddings = model.encode([term1, term2])
+        # Context-enriched embedding encoding
+        desc1 = f"{canon1['category']} {term1}" if canon1 else term1
+        desc2 = f"{canon2['category']} {term2}" if canon2 else term2
+
+        embeddings = model.encode([desc1, desc2])
         sim = float(cosine_similarity([embeddings[0]], [embeddings[1]])[0][0])
-        return max(0.0, min(1.0, sim))
+        return max(0.0, min(1.0, sim + category_boost))
 
     @staticmethod
     def find_best_match(

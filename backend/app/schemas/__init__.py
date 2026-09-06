@@ -19,6 +19,13 @@ from app.schemas.analysis import (
     CompareJobsResponse,
     JobMatchSummary,
 )
+from app.schemas.roadmap import (
+    RoadmapCreate,
+    LearningRoadmapResponse,
+    RoadmapItemResponse,
+    RoadmapItemStatusUpdate,
+    ResumeQualityAuditResponse,
+)
 
 __all__ = [
     "UserBase",
@@ -45,4 +52,9 @@ __all__ = [
     "CompareJobsRequest",
     "CompareJobsResponse",
     "JobMatchSummary",
+    "RoadmapCreate",
+    "LearningRoadmapResponse",
+    "RoadmapItemResponse",
+    "RoadmapItemStatusUpdate",
+    "ResumeQualityAuditResponse",
 ]
