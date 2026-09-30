@@ -64,15 +64,15 @@ class SemanticMatcher:
         # Check if skills belong to the same specific taxonomy subfield/category
         category_boost = 0.0
         if canon1 and canon2 and canon1["category"] == canon2["category"]:
-            category_boost = 0.25
+            category_boost = 0.50
 
         model = get_sentence_transformer_model()
         if model is None:
-            # Fallback if sentence-transformers not available: token overlap
+            # Fallback if sentence-transformers not available: token overlap + category similarity
             set1 = set(t1.split())
             set2 = set(t2.split())
             jaccard = len(set1 & set2) / max(len(set1 | set2), 1)
-            return min(1.0, jaccard + category_boost)
+            return min(1.0, max(jaccard, category_boost))
 
         # Context-enriched embedding encoding
         desc1 = f"{canon1['category']} {term1}" if canon1 else term1
@@ -80,7 +80,7 @@ class SemanticMatcher:
 
         embeddings = model.encode([desc1, desc2])
         sim = float(cosine_similarity([embeddings[0]], [embeddings[1]])[0][0])
-        return max(0.0, min(1.0, sim + category_boost))
+        return max(0.0, min(1.0, sim + category_boost * 0.5))
 
     @staticmethod
     def find_best_match(

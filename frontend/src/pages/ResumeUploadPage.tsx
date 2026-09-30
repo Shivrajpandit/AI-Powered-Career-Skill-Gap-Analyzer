@@ -11,6 +11,13 @@ import {
   ShieldCheck,
   Edit3,
   Trash2,
+  Sparkles,
+  Award,
+  Layers,
+  User,
+  Mail,
+  Phone,
+  Briefcase,
 } from 'lucide-react';
 import { SkillBadge } from '../components/common/SkillBadge';
 
@@ -78,15 +85,19 @@ export const ResumeUploadPage: React.FC = () => {
 
   return (
     <div className="space-y-8 max-w-4xl mx-auto">
-      <div className="space-y-1">
-        <h1 className="text-2xl font-bold text-white tracking-tight">Upload & Parse Resume</h1>
-        <p className="text-xs text-slate-400">
-          Upload your resume in PDF or DOCX format for automatic information extraction and skill recognition.
+      <div className="space-y-2">
+        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-500/15 text-brand-300 border border-brand-500/30 text-xs font-semibold">
+          <Sparkles className="w-3.5 h-3.5 text-brand-400" />
+          Multi-Format Document Parsing
+        </div>
+        <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">Upload & Parse Resume</h1>
+        <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+          Upload your resume in PDF or DOCX format for automatic information extraction, skill normalization, and ATS suitability review.
         </p>
       </div>
 
       {error && (
-        <div className="p-4 rounded-2xl bg-rose-500/10 border border-rose-500/20 flex items-center gap-3 text-xs text-rose-300">
+        <div className="p-4 rounded-2xl bg-rose-500/10 border border-rose-500/30 flex items-center gap-3 text-xs text-rose-300">
           <AlertCircle className="w-5 h-5 shrink-0 text-rose-400" />
           <span>{error}</span>
         </div>
@@ -99,10 +110,10 @@ export const ResumeUploadPage: React.FC = () => {
             onDragOver={(e) => e.preventDefault()}
             onDrop={handleFileDrop}
             onClick={() => fileInputRef.current?.click()}
-            className={`border-2 border-dashed rounded-3xl p-12 text-center cursor-pointer transition-all ${
+            className={`border-2 border-dashed rounded-3xl p-10 sm:p-14 text-center cursor-pointer transition-all ${
               file
-                ? 'border-brand-500 bg-brand-500/5'
-                : 'border-slate-700/80 hover:border-slate-500 bg-slate-900/40 hover:bg-slate-900/60'
+                ? 'border-brand-500 bg-brand-500/10 shadow-glow-brand'
+                : 'border-slate-700/80 hover:border-brand-500/60 bg-slate-900/50 hover:bg-slate-900/80'
             }`}
           >
             <input
@@ -112,17 +123,19 @@ export const ResumeUploadPage: React.FC = () => {
               accept=".pdf,.docx"
               className="hidden"
             />
-            <div className="w-16 h-16 rounded-2xl bg-brand-500/10 border border-brand-500/20 flex items-center justify-center text-brand-400 mx-auto mb-4">
-              <UploadCloud className="w-8 h-8" />
+            <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-brand-600/30 to-indigo-600/30 border border-brand-500/30 flex items-center justify-center text-brand-400 mx-auto mb-4 shadow-sm">
+              <UploadCloud className="w-8 h-8 animate-bounce" />
             </div>
 
             {file ? (
-              <div className="space-y-1">
+              <div className="space-y-1.5">
                 <p className="text-sm font-bold text-white">{file.name}</p>
-                <p className="text-xs text-slate-400">{(file.size / (1024 * 1024)).toFixed(2)} MB • Ready to analyze</p>
+                <p className="font-metric text-xs text-brand-300 font-semibold">
+                  {(file.size / (1024 * 1024)).toFixed(2)} MB • Ready to analyze
+                </p>
               </div>
             ) : (
-              <div className="space-y-1">
+              <div className="space-y-2">
                 <p className="text-sm font-bold text-white">Click to upload or drag & drop</p>
                 <p className="text-xs text-slate-400">Supports PDF and DOCX documents (Up to 5MB)</p>
               </div>
@@ -133,7 +146,7 @@ export const ResumeUploadPage: React.FC = () => {
             {file && (
               <button
                 onClick={() => setFile(null)}
-                className="px-4 py-2.5 rounded-xl text-xs font-semibold text-slate-400 hover:text-white bg-slate-800 hover:bg-slate-700 transition"
+                className="px-4 py-2.5 rounded-xl text-xs font-semibold text-slate-400 hover:text-white bg-slate-900 border border-slate-800 hover:bg-slate-800 transition"
               >
                 Clear
               </button>
@@ -141,40 +154,49 @@ export const ResumeUploadPage: React.FC = () => {
             <button
               onClick={handleUpload}
               disabled={!file || uploading}
-              className="px-6 py-2.5 rounded-xl text-xs font-semibold text-white bg-gradient-to-r from-brand-600 to-indigo-600 hover:opacity-90 shadow-glow-brand flex items-center gap-2 disabled:opacity-40 transition"
+              className="px-7 py-3 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-brand-600 via-indigo-600 to-purple-600 hover:opacity-95 shadow-glow-brand flex items-center gap-2 disabled:opacity-40 transition-all"
             >
-              {uploading ? 'Parsing Resume with NLP...' : 'Extract Resume Information'}
-              <ArrowRight className="w-4 h-4" />
+              {uploading ? (
+                <>
+                  <div className="w-3.5 h-3.5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                  Parsing Resume with NLP...
+                </>
+              ) : (
+                <>
+                  Extract Resume Information
+                  <ArrowRight className="w-4 h-4" />
+                </>
+              )}
             </button>
           </div>
         </div>
       ) : (
         /* Parsed Review Section */
         <div className="space-y-6 animate-fade-in">
-          <div className="p-6 rounded-3xl glass-panel-glow flex items-center justify-between">
+          <div className="p-6 rounded-3xl glass-panel-glow flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400">
+              <div className="w-12 h-12 rounded-2xl bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center text-emerald-400 shadow-glow-emerald">
                 <CheckCircle2 className="w-6 h-6" />
               </div>
               <div>
                 <h3 className="text-base font-bold text-white">Extraction Complete</h3>
-                <p className="text-xs text-slate-400">
-                  {parsedResume.file_name} • Completeness Score: {parsedResume.completeness_score}%
+                <p className="text-xs text-slate-300 mt-0.5">
+                  {parsedResume.file_name} • Completeness: <strong className="text-emerald-400 font-metric">{parsedResume.completeness_score}%</strong>
                 </p>
               </div>
             </div>
 
-            <div className="flex gap-2">
+            <div className="flex flex-wrap gap-2.5">
               <button
                 onClick={() => setIsEditing(!isEditing)}
-                className="px-3.5 py-2 rounded-xl text-xs font-semibold text-slate-300 bg-slate-800 hover:bg-slate-700 flex items-center gap-1.5 transition"
+                className="px-4 py-2 rounded-xl text-xs font-semibold text-slate-300 bg-slate-900 border border-slate-800 hover:bg-slate-800 flex items-center gap-1.5 transition"
               >
                 <Edit3 className="w-3.5 h-3.5" />
                 {isEditing ? 'Cancel Edit' : 'Edit Extracted Data'}
               </button>
               <button
                 onClick={() => navigate('/jobs/new')}
-                className="px-4 py-2 rounded-xl text-xs font-semibold text-white bg-brand-600 hover:bg-brand-500 shadow-glow-brand flex items-center gap-1.5 transition"
+                className="px-5 py-2 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-brand-600 to-indigo-600 hover:opacity-95 shadow-glow-brand flex items-center gap-1.5 transition"
               >
                 Match Against Job
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -184,12 +206,12 @@ export const ResumeUploadPage: React.FC = () => {
 
           {/* Contact Details Card */}
           <div className="p-6 rounded-3xl glass-panel space-y-4">
-            <h3 className="text-sm font-bold text-white uppercase tracking-wider text-slate-400">
-              Candidate Contact Details
+            <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-2">
+              <User className="w-3.5 h-3.5 text-brand-400" /> Candidate Contact Details
             </h3>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
-              <div className="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800">
-                <span className="text-slate-400 block mb-1">Full Name</span>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+              <div className="p-3.5 rounded-2xl bg-slate-900/80 border border-slate-800">
+                <span className="text-slate-400 text-[10px] uppercase font-bold block mb-1">Full Name</span>
                 {isEditing ? (
                   <input
                     type="text"
@@ -203,7 +225,7 @@ export const ResumeUploadPage: React.FC = () => {
                         },
                       })
                     }
-                    className="w-full bg-slate-800 border border-slate-700 rounded px-2 py-1 text-white"
+                    className="w-full bg-slate-800 border border-slate-700 rounded-lg px-2 py-1 text-white text-xs"
                   />
                 ) : (
                   <span className="font-semibold text-white">
@@ -212,15 +234,15 @@ export const ResumeUploadPage: React.FC = () => {
                 )}
               </div>
 
-              <div className="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800">
-                <span className="text-slate-400 block mb-1">Email Address</span>
-                <span className="font-semibold text-white">
+              <div className="p-3.5 rounded-2xl bg-slate-900/80 border border-slate-800">
+                <span className="text-slate-400 text-[10px] uppercase font-bold block mb-1">Email Address</span>
+                <span className="font-semibold text-white truncate block">
                   {parsedResume.parsed_data.contact.email || 'Not detected'}
                 </span>
               </div>
 
-              <div className="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800">
-                <span className="text-slate-400 block mb-1">Phone Number</span>
+              <div className="p-3.5 rounded-2xl bg-slate-900/80 border border-slate-800">
+                <span className="text-slate-400 text-[10px] uppercase font-bold block mb-1">Phone Number</span>
                 <span className="font-semibold text-white">
                   {parsedResume.parsed_data.contact.phone || 'Not detected'}
                 </span>
@@ -230,8 +252,8 @@ export const ResumeUploadPage: React.FC = () => {
 
           {/* Extracted Skills Card */}
           <div className="p-6 rounded-3xl glass-panel space-y-4">
-            <h3 className="text-sm font-bold text-white uppercase tracking-wider text-slate-400">
-              Detected Technical Skills ({parsedResume.skills.length})
+            <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-2">
+              <Layers className="w-3.5 h-3.5 text-brand-400" /> Detected Technical Skills ({parsedResume.skills.length})
             </h3>
             <div className="flex flex-wrap gap-2">
               {parsedResume.skills.map((skill) => (
@@ -248,15 +270,15 @@ export const ResumeUploadPage: React.FC = () => {
 
           {/* Experience Highlights */}
           <div className="p-6 rounded-3xl glass-panel space-y-4">
-            <h3 className="text-sm font-bold text-white uppercase tracking-wider text-slate-400">
-              Work Experience ({parsedResume.parsed_data.experience?.length || 0})
+            <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-2">
+              <Briefcase className="w-3.5 h-3.5 text-brand-400" /> Work Experience Positions ({parsedResume.parsed_data.experience?.length || 0})
             </h3>
             <div className="space-y-3">
               {parsedResume.parsed_data.experience?.map((exp, idx) => (
-                <div key={idx} className="p-4 rounded-xl bg-slate-900/60 border border-slate-800 space-y-2">
+                <div key={idx} className="p-4 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-2">
                   <div className="flex justify-between items-start">
                     <h4 className="text-xs font-bold text-white">{exp.title_company || 'Experience Entry'}</h4>
-                    <span className="text-[11px] text-slate-400">{exp.date_range}</span>
+                    <span className="text-[11px] font-metric text-brand-300 font-semibold">{exp.date_range}</span>
                   </div>
                   <ul className="list-disc list-inside text-xs text-slate-300 space-y-1">
                     {exp.responsibilities.slice(0, 3).map((r, rIdx) => (
@@ -272,7 +294,7 @@ export const ResumeUploadPage: React.FC = () => {
             <div className="flex justify-end">
               <button
                 onClick={handleSaveParsedEdits}
-                className="px-6 py-2.5 rounded-xl text-xs font-semibold text-white bg-emerald-600 hover:bg-emerald-500 shadow-glow-emerald transition"
+                className="px-6 py-2.5 rounded-xl text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-500 shadow-glow-emerald transition"
               >
                 Save Changes
               </button>
@@ -283,3 +305,4 @@ export const ResumeUploadPage: React.FC = () => {
     </div>
   );
 };
+
