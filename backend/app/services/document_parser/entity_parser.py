@@ -1,12 +1,19 @@
 import re
 from typing import Dict, Any, List, Optional
-import spacy
-
 # Load spaCy pipeline
 try:
-    nlp = spacy.load("en_core_web_sm")
+    import spacy
+    try:
+        nlp = spacy.load("en_core_web_sm")
+    except Exception:
+        nlp = spacy.blank("en")
 except Exception:
-    nlp = spacy.blank("en")
+    class _DummyDoc:
+        def __init__(self, text: str):
+            self.text = text
+            self.ents = []
+    def nlp(text: str):
+        return _DummyDoc(text)
 
 
 # Regex patterns
